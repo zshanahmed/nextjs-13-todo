@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 type TodoItemProps = {
   id: string;
@@ -32,12 +33,20 @@ export function TodoItem({
           {title}
         </label>
       </div>
-      <button
-        className="bg-red-500 hover:bg-red-700 focus-within:bg-red-700 text-white px-2 py-1 rounded outline-none"
-        onClick={() => deleteTodo(id)}
-      >
-        Delete
-      </button>
+      <div className="flex gap-3">
+        <button
+          className="bg-red-500 hover:bg-red-700 focus-within:bg-red-700 text-white px-2 py-1 rounded outline-none"
+          onClick={() => deleteTodo(id)}
+        >
+          Delete
+        </button>
+        <Link
+          className="bg-slate-500 hover:bg-slate-700 focus-within:bg-slate-700 text-white px-2 py-1 rounded outline-none"
+          href={`/update/${id}`}
+        >
+          Update
+        </Link>
+      </div>
     </li>
   );
 }
